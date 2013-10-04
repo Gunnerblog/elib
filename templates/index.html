@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%block content%}
+{% if not user %}
+<form action="" method="post">
+	<table>
+	<h3> E-Library</h3>
+	{% for field in authform %}
+		<tr>
+			<td> {{ field.label}} </td>
+			<td> {{ field}} </td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				    {% for error in field.errors %}
+				      	<div class="alert alert-error">
+						 	{{ error }}
+						</div>
+				    {% endfor %}
+			</td>
+		</tr>
+    {% endfor %}   
+    </table>
+    <p> <input type="submit" value="Sign In" class="btn btn-primary"> <p>
+</form>
+<a href="/registration"> Registration </a>
+{% else %}
+<p> Hi <a href="/home">{{user.name }}</a> </p>
+<p> <a href="/logout"> Exit </a></p>
+{% endif %}
+{% endblock %}

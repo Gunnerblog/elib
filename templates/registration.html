@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h3> Registration </h3>
+<form action="" method="POST">
+	<table>
+	{% for field in form %}
+		<tr>
+			<td> {{ field.label}} </td>
+			<td> {{ field}} </td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<ul class=errors>
+				    {% for error in field.errors %}
+				    <li>
+				      	<div class="alert alert-error">
+						 	 {{ error }} 
+						</div>
+					</li>
+				    {% endfor %}
+		    	</ul>
+			</td>
+		</tr>
+    {% endfor %}   
+    </table>
+
+	<p> <input type="submit" value="Sign Up" class="btn btn-primary"> <p>
+
+</form>
+
+<a href="/"> Back to main page </a>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2></h2>
+<form action="/home" method="post">
+	<div class="input-append">
+  		<input class="span2" id="appendedInputButton" size="16" type="text" name="search"><button class="btn" type="submit">Search</button>
+	</div>
+</form>
+{% if books %}
+	{% for book, authors in books.items() recursive %}
+		<p> Title - {{ book.title }} </p>
+		<h4> Author(s)</h4>
+		<ul>
+		{% for author in authors %}
+			<li> {{ author.name }} </li>
+		{% endfor %}
+		</ul>
+	{% endfor %}
+{% else %}
+	<p> Results not found </p>
+{% endif %}
+<a href="/logout">Exit</a>
+{% endblock %}
