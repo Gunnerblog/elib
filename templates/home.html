@@ -8,8 +8,8 @@
 </form>
 {% if books %}
 	{% for book, authors in books.items() recursive %}
-		<p> Title - {{ book.title }} </p>
-		<h4> Author(s)</h4>
+		<h4> {{ book.title }} </h4>
+		<p> Author(s) </p> 
 		<ul>
 		{% for author in authors %}
 			<li> {{ author.name }} </li>

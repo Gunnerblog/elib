@@ -20,9 +20,12 @@ class MyAdminIndexView(admin.AdminIndexView):
         return self.render('adminindex.html')
 
     def is_accessible(self):
-        user = User().get(session['username'])
-        if user and user.is_staff:
-            return True
+        if 'username' in session:    
+            user = User().get(session['username'])
+            if user and user.is_staff:
+                return True
+            else:
+                return False
         else:
             return False
 
@@ -97,10 +100,4 @@ def admin():
 
 if __name__ == "__main__":
     init_db()   
-    #author = Author('Jack London')
-    #book = db_session.query(Book).filter_by(title='World on Clarkson').one() #Book.query.filter(Book.title == 'World on Clarkson')
-    #author = Author('Dude')
-    #book.authors.append(author)
-    #db_session.add(book)
-    #db_session.commit()  
     app.run(debug=True)

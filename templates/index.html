@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {%block content%}
+<h3> E-Library</h3>
 {% if not user %}
 <form action="" method="post">
 	<table>
-	<h3> E-Library</h3>
 	{% for field in authform %}
 		<tr>
 			<td> {{ field.label}} </td>
@@ -24,7 +24,14 @@
 </form>
 <a href="/registration"> Registration </a>
 {% else %}
-<p> Hi <a href="/home">{{user.name }}</a> </p>
+<p> 
+	You are logged in the system. 
+	{% if user.is_staff %}
+		<a href="/admin"> To home page </a>
+	{% else %}
+		<a href="/home"> To home page </a>
+	{% endif %}
+ </p>
 <p> <a href="/logout"> Exit </a></p>
 {% endif %}
 {% endblock %}
