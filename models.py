@@ -84,7 +84,7 @@ class Search():
             all_results = list(authors_results) + list(books_results)
 
             result_dict = {}
-            #create keys in dict
+
             for item in all_results:
                 if item[0] not in result_dict:
                     result_dict[item[0]] = []

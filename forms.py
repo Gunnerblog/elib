@@ -27,11 +27,11 @@ class RegistrationForm(Form):
                 raise ValidationError('User with current email already exist')
 
 
-class AuthForm(Form):  
+class AuthenticationForm(Form):  
     email = TextField('Email Address')
     password = PasswordField('Password')
 
     def validate_password(self, field):
         user = User.query.filter(User.password == self.password.data, User.email == self.email.data).first()
         if not user:
-            raise ValidationError("User with this email and password not exist")
+            raise ValidationError("User with this email and password does not exist")

@@ -8,7 +8,7 @@ from flask.ext import admin
 from flask.ext.admin import Admin, BaseView, expose
 from flask.ext.admin.contrib.sqlamodel import ModelView
 
-from forms import RegistrationForm, AuthForm
+from forms import RegistrationForm, AuthenticationForm
 from database import db_session, init_db
 from models import User, Book, Author, Search
 
@@ -44,7 +44,7 @@ def shutdown_session(exception=None):
     db_session.remove()
 
 @app.route('/home',  methods=['GET','POST'])
-def home(name = None):
+def home():
     if 'username' in session:
         user = User().get(session['username'])
         if request.method == "POST":
@@ -78,12 +78,11 @@ def logout():
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-
     user = None
     if 'username' in session:
         user = User().get(session['username'])
 
-    authform = AuthForm(request.form)
+    authform = AuthenticationForm(request.form)
     if request.method == "POST" and authform.validate():
         user = User().authentication(authform.email.data, authform.password.data)
         session['username'] = user.name
