@@ -59,17 +59,17 @@ def home(name = None):
 
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
-    form = RegistrationForm(request.form)
-    user = None
-    if 'username' in session:
-        user = User().get(session['username'])
-
-    if request.method == "POST" and form.validate():
-        user = User().create(form.username.data, form.email.data, form.password.data)
-        session['username'] = user.name
-        return redirect(url_for('home'))
+    if 'username' not in session:
+        form = RegistrationForm(request.form)
+        user = None
+        if request.method == "POST" and form.validate():
+            user = User().create(form.username.data, form.email.data, form.password.data)
+            session['username'] = user.name
+            return redirect(url_for('home'))
+        else:
+            return render_template('registration.html', form=form, user=user)
     else:
-        return render_template('registration.html', form=form, user=user)
+        return redirect(url_for('index'))
 
 @app.route("/logout")
 def logout():
