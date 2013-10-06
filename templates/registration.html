@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<h3> Registration </h3>
 <form action="" method="POST">
-	<table>
+	
+	<table align="center">
+	<tr>
+		<td> <h3> Registration </h3> </td>
+	</tr>
 	{% for field in form %}
 		<tr>
 			<td> {{ field.label}} </td>
@@ -22,11 +25,17 @@
 			</td>
 		</tr>
     {% endfor %}   
+    <tr>
+    	<td> <input type="submit" value="Sign Up" class="btn btn-primary"> </td>
+    </tr>
+    <tr>
+    	<td> 
+    		<p> </p> 
+    		<a href="/"> Back to main page </a>  
+    	</td>
+    </tr>
     </table>
-
-	<p> <input type="submit" value="Sign Up" class="btn btn-primary"> <p>
-
 </form>
 
-<a href="/"> Back to main page </a>
+
 {% endblock %}

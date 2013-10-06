@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+
 {% block content %}
 <h3> E-Library</h3>
-<form action="/home" method="post">
-	<div class="input-append">
-  		<input class="span2" id="appendedInputButton" size="16" type="text" name="search"><button class="btn" type="submit">Search</button>
+<form id="custom-search-form" class="form-search form-horizontal pull-right" action="/home" method="post">
+	<div class="input-append span12">
+  		<input type="text" class="search-query" placeholder="Search" name="search">
+		<button type="submit" class="btn"><i class="icon-search"></i></button>
 	</div>
 </form>
 {% if books %}

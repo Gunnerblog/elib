@@ -34,4 +34,4 @@ class AuthForm(Form):
     def validate_password(self, field):
         user = User.query.filter(User.password == self.password.data, User.email == self.email.data).first()
         if not user:
-            raise ValidationError("User with this email or username not exist")
+            raise ValidationError("User with this email and password not exist")
