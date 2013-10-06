@@ -91,3 +91,4 @@ INSERT INTO [users] ([id], [name], [email], [password], [is_staff]) VALUES (1, '
 INSERT INTO [users] ([id], [name], [email], [password], [is_staff]) VALUES (2, 'testuser', 'testuser@gmail.com', 12344321, 0);
 INSERT INTO [users] ([id], [name], [email], [password], [is_staff]) VALUES (3, 'testuser2', 'testuser2@gmail.com', 12344321, 0);
 INSERT INTO [users] ([id], [name], [email], [password], [is_staff]) VALUES (4, 'testuser3', 'testuser3@gmail.com', 12344321, 0);
+INSERT INTO [users] ([id], [name], [email], [password], [is_staff]) VALUES (5, 'testuser4', 'testuser14@gmail.com', '12344321a', 0);
